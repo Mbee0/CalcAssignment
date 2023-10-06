@@ -1,0 +1,64 @@
+.container {
+    border-radius: 1vw;
+    box-shadow: 0 5px;
+    color: rgb(69, 78, 78);
+    font-size: large;
+    height: 56vw;
+    width: 40vw;
+    background-color: darkgray;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.result {
+    width: 92%;
+    height: 16%;
+    background-color: rgb(192, 232, 228);
+    color: rgb(69, 78, 78);
+    text-align: right;
+    font-size: 8vw;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    align-content: center;
+    border-radius: 1vw;
+    box-shadow: 0 4px;
+}
+
+.grid {
+    width: 98%;
+    height: 70%;
+    display: flex;
+    justify-content: space-around;
+    align-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.button {
+    border-radius: 1vw;
+    font-size: 5vw;
+    height: 9vw;
+    width: 9vw;
+    min-height: 20px;
+    min-width: 20px;
+    background-color: rgb(219, 229, 228);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: rgb(69, 78, 78);
+    box-shadow: 0 5px;
+}
+
+.button:hover {
+    background-color: rgb(188, 206, 204);
+}
+
+.button:active {
+    background-color: rgb(188, 206, 204);
+    box-shadow: 0 2px;
+    transform: translateY(3px);
+}
