@@ -1,15 +1,25 @@
 let view = "";
 let justEqualed = false;
+let mathPressed = false;
 
 function inPress(entry) {
-    if (justEqualed && !isNaN(parseInt(entry))) {
-        shouldClear();
-        justEqualed = false;
-    } else if (justEqualed) {
-        justEqualed = false;
+    if (mathPressed && isNaN(parseInt(entry))) {
+        mathPressed = true;
+    } else {
+        if (!isNaN(parseInt(entry))) {
+            mathPressed = false;
+        } else {
+            mathPressed = true;
+        }
+        if (justEqualed && !mathPressed) {
+            shouldClear();
+            justEqualed = false;
+        } else if (justEqualed) {
+            justEqualed = false;
+        }
+        view += entry;
+        document.getElementById("stoopid").textContent = view;
     }
-    view += entry;
-    document.getElementById("stoopid").textContent = view;
 }
 
 function equals() {
@@ -31,26 +41,28 @@ function equals() {
         } else if (expression.charAt(i) == '/' || expression.charAt(i) == 'x') {
             first = nums[nums.length - 1];
             let second = parseInt(expression.charAt(i + 1));
-            // let counter = 1;
-            // for (let j = (i + 1); j < expression.length; j++) {
-            //     if (j == (i + 1)) {
-            //         second = parseInt(expression.charAt(j));
-            //     } else {
-            //         if (!isNaN(expression.charAt(i))) {
-            //             let holder = (second * 10) + parseInt(expression.charAt(j))
-            //             second = (second * 10) + parseInt(expression.charAt(j));
-            //             counter++;
-            //         } else {
-            //             j = nums.length;
-            //         }
-            //     }
-            // }
+            let counter = 1;
+            console.log("in here");
+            for (let j = (i + 1); j < expression.length; j++) {
+                if (j == (i + 1)) {
+                    console.log("done one");
+                    second = parseInt(expression.charAt(j));
+                } else if (!isNaN(expression.charAt(j))) {
+                    let holder = (second * 10) + parseInt(expression.charAt(j))
+                    second = (second * 10) + parseInt(expression.charAt(j));
+                    counter++;
+                    console.log("is in here?");
+                } else {
+                    j = expression.length;
+                }
+            }
+            console.log("second: " + second);
             if (expression.charAt(i) == '/') {
                 nums[nums.length - 1] = first / second;
             } else {
                 nums[nums.length - 1] = first * second;
             }
-            i++;
+            i += counter;
             wasNum = false;
             console.log("nums: " + nums);
         } else {
